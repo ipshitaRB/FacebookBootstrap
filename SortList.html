@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sort list items alphabetically with Javascript</title>
+        <script type="text/javascript">
+        
+        function sortUnorderedList(ul) {
+          if(typeof ul == "string")
+            ul = document.getElementById(ul);
+
+          var lis = ul.getElementsByTagName("li");
+          var vals = [];
+		  
+		  var sortedList = "";
+
+          for(var i = 0, l = lis.length; i < l; i++)
+            vals.push(lis[i].innerHTML);
+
+          vals.sort();
+
+
+          for(var i = 0, l = lis.length; i < l; i++)	{
+            
+			var sortedElement = vals[i];
+            sortedList += "<li>"+sortedElement+"</li>";
+			}
+			
+			var MyList = document.getElementById('results');        
+			MyList.innerHTML = sortedList;
+        }
+        
+        window.onload = function() {
+     
+          document.getElementById("test").onclick = function() {
+            sortUnorderedList("list");
+            
+            return false;
+          }
+        }
+        
+        </script>
+    </head>
+    <body>
+        <input type="button" id="test" value="Sort List "/>
+        <ul id="list">
+            <li>Car</li>
+            <li>Bus</li>
+            <li>Train</li>
+            <li>Scooter</li>
+            <li>Aeroplane</li>
+            
+        </ul>
+		
+		<ul id="results"></ul>
+		
+    </body>
+</html>
